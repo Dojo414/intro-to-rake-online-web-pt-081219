@@ -1,11 +1,11 @@
 
-  task :environemnt do
-    require_relative './config/environment'
-  end
+ task :environment do
+  require_relative './config/environment'
+end
 
-namespace :greeting do
-  desc 'outputs hello to the terminal'
-  task :hello do
+desc 'outputs hello to the terminal'
+namespace :greeting do 
+  task :hello do 
     puts "hello from Rake!"
   end
 
@@ -16,18 +16,18 @@ namespace :greeting do
 end
 
 namespace :db do
-  
   desc 'migrate changes to your database'
-  task :migrate => :environemnt do
+  task :migrate => :environment do 
     Student.create_table
   end
-  desc 'seed the database with some summy data'
+
+  desc 'seed the database with some dummy data'
   task :seed do
-    require_relative './db/seeds.rb'
+    require_relative './db/seeds.rb' 
   end
 end
 
 desc 'drop into the Pry console'
-task :console => :environemnt do
-  Pry.start 
-end
+task :console => :environment do 
+  Pry.start
+end 
